@@ -3,11 +3,12 @@ package com.example.hellospring.service;
 import com.example.hellospring.domain.Member;
 import com.example.hellospring.repository.MemberRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-
+//@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -21,6 +22,7 @@ public class MemberService {
      * @param member
      * @return
      */
+    @Transactional
     public Long join(Member member) {
         //같은 이름이 있는 중복 회원 X
         validateDuplicatedMember(member);
